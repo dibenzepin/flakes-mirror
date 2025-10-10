@@ -46,8 +46,7 @@
       });
 
       devShells = forAllSystems (pkgs: {
-        default = pkgs.mkShell rec {
-
+        default = pkgs.mkShell {
           packages =
             with pkgs;
             [
@@ -62,12 +61,8 @@
               # xorg.libxcb
               # wayland
               # vulkan-loader
+              # rustPlatform.bindgenHook
             ];
-
-          env = {
-            RUST_SRC_PATH = "${pkgs.toolchain}/lib/rustlib/src/rust/library";
-            LD_LIBRARY_PATH = "${pkgs.lib.makeLibraryPath packages}:$LD_LIBRARY_PATH";
-          };
         };
       });
     };
