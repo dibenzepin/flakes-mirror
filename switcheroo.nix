@@ -1,4 +1,5 @@
 {
+  jujutsu,
   lix-diff,
   nix-output-monitor,
   writeShellApplication,
@@ -7,6 +8,7 @@
 (writeShellApplication {
   name = "switcheroo"; # fancy script for `nixos-rebuild switch`
   runtimeInputs = [
+    jujutsu
     lix-diff
     nix-output-monitor
   ];
@@ -29,26 +31,12 @@
       exit 1
     fi;
 
-    cleanup() {
-      echo cleaning up...
-      cd "$DATA_DIR"
-      if [[ -e flake.lock.old ]]; then rm flake.lock.old; fi
-    }
-
-    # shellcheck disable=SC2317 # we set this from a trap and shellcheck can't tell it's used
-    revert() {
-      echo reverting lockfile...
-      cd "$DATA_DIR"
-      if [[ -e flake.lock.old ]]; then mv flake.lock.old flake.lock; fi
-      exit 1
-    }
-
     if [[ $# = 1 && ( "$1" = "-f" || "$1" = "--fast" ) ]]; then # -f/--fast skips updating the lockfiles
       echo "skipping lockfile update..."
     else
       cd "$DATA_DIR"
-      cp flake.lock flake.lock.old
-      trap revert INT TERM
+      # if we're not on a "blank" commit, make a new one
+      if [[ $(jj diff --name-only | wc -l) -ne 0 ]]; then jj new; fi
       nix flake update
     fi;
 
