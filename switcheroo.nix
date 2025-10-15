@@ -49,7 +49,6 @@
     read -r -p "switch? [y/N] " response
     if [[ "$response" = "y" ]]; then eval "$SWITCH"; fi
 
-    cleanup
     exit 0
   '';
 })
