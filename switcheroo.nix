@@ -43,7 +43,7 @@
     cd "$(mktemp -d)"
     echo "building in $(pwd)..."
     eval "$BUILD"
-    printf "%s\n\n" "$(lix diff /run/current-system ./result)" # sometimes it has two trailing newlines, sometimes one
+    lix diff /run/current-system ./result
 
     eval "$NOTIFY"
     read -r -p "switch? [y/N] " response
