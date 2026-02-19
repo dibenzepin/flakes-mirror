@@ -23,7 +23,7 @@
         # with help from fasterthanlime's nix intro https://fasterthanli.me/series/building-a-rust-service-with-nix/part-9
         # and https://yashgarg.dev/posts/nix-custom-fonts
 
-        apple-color-emoji-bin = pkgs.callPackage ./fonts/apple-color-emoji-bin.nix { };
+        apple-emoji-ttf-bin = pkgs.callPackage ./fonts/apple-emoji-ttf-bin.nix { };
         helvetica = pkgs.callPackage ./fonts/helvetica.nix { };
         helvetica-neue = pkgs.callPackage ./fonts/helvetica-neue.nix { };
 
@@ -34,7 +34,7 @@
         default = pkgs.symlinkJoin {
           name = "all";
           paths = [
-            apple-color-emoji-bin
+            apple-emoji-ttf-bin
             helvetica
             helvetica-neue
             switcheroo
