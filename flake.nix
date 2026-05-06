@@ -29,6 +29,7 @@
 
         # programs
         switcheroo = pkgs.callPackage ./switcheroo.nix { };
+        mommy = pkgs.callPackage ./mommy.nix { };
 
         # default target to build all packages
         default = pkgs.symlinkJoin {
@@ -38,6 +39,7 @@
             helvetica
             helvetica-neue
             switcheroo
+            mommy
           ];
         };
       });
