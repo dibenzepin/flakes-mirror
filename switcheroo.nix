@@ -25,7 +25,7 @@
       DATA_DIR="/etc/nix-darwin"
       BUILD="darwin-rebuild build -L |& nom"
       SWITCH="sudo darwin-rebuild switch -L |& nom"
-      NOTIFY="osascript -e 'display notification \"got a minute?\" with title \"yo\"'"
+      NOTIFY="osascript -e 'display notification \"got a minute?\" with title \"yo\" sound name \"Beep\"'"
     else
       echo "unknown system detected...exiting"
       exit 1
