@@ -56,6 +56,11 @@
           path = ./templates/typst;
           description = "sample typst devenv with tinymist + typstyle";
         };
+
+        minimal = {
+          path = ./templates/minimal;
+          description = "sample minimal devshell";
+        };
       };
     };
 }

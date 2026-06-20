@@ -14,6 +14,7 @@ mostly just consists of fonts and flake templates using direnv + nix-direnv:
   - [Helvetica](fonts/helvetica.nix)
   - [Helvetica Neue](fonts/helvetica-neue.nix)
 - templates
+  - [Minimal](templates/minimal/)
   - [Rust](templates/rust/)
   - [Typst](templates/typst/)
 
